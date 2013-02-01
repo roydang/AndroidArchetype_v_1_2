@@ -30,7 +30,14 @@
 	        <groupId>com.google.code.findbugs</groupId>
 	        <artifactId>jsr305</artifactId>
 	        <version>1.3.9</version>
-	    </dependency>                
+	    </dependency>  
+	    
+		<dependency>
+		    <groupId>m2.android.archetype.example</groupId>
+		    <artifactId>AndroidArchetype_library</artifactId>
+		    <version>0.0.1-SNAPSHOT</version>		    
+			<type>apklib</type>
+		</dependency>	                  
     </dependencies>
 
     <build>
