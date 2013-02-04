@@ -1,5 +1,6 @@
 package m2.android.archetype.example;
 
+import m2.android.archetype.example.AndroidArchetype_library.HelloAndroidActivity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ public class MainActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options));
+		HelloAndroidActivity.testLibrary();
 	}
 	
 	@Override
