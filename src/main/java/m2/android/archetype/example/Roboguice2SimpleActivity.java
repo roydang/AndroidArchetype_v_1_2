@@ -1,6 +1,5 @@
 package m2.android.archetype.example;
 
-import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectResource;
 import roboguice.inject.InjectView;
 import android.graphics.drawable.Drawable;
@@ -10,8 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.inject.Inject;
+import com.nhn.android.archetype.base.AABaseActivity;
 
-public class Roboguice2SimpleActivity extends RoboActivity {
+public class Roboguice2SimpleActivity extends AABaseActivity {
 	
 	@InjectView(R.id.name)             			TextView name; 
     @InjectView(R.id.thumbnail)        			ImageView thumbnail; 
