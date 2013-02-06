@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_more"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="13.33dp"
+    android:paddingTop="13.33dp"
+    android:background="#f7f7f7"
+    android:tag="#ExtraListItem" >
+
+    <com.nhn.android.me2day.customview.M2Progress
+        android:id="@+id/item_more_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:tag="has_moreItem" />
+
+</RelativeLayout>

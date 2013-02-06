@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:m2="http://schemas.android.com/apk/res/m2.android.archetype.example"
+    android:id="@+id/item_stream_comment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_common_list"
+    android:clickable="true"
+    android:longClickable="true"
+    android:tag="#Comment" >
+
+    <RelativeLayout
+        android:id="@+id/stream_comment_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="13.33dp"
+        android:paddingLeft="13.33dp"
+        android:paddingRight="13.33dp" >
+
+        <RelativeLayout
+            android:id="@+id/comment_area_stream_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13.33dp" >
+
+            <m2.android.archetype.widget.UrlImageView
+                android:id="@+id/comment_stream_story_profile_photo"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:clickable="true"
+                android:tag="author.face"
+                m2:scaleType="centerCrop" />
+
+            <RelativeLayout
+                android:id="@+id/comment_area_stream_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="6.67dp"
+                android:layout_toRightOf="@id/comment_stream_story_profile_photo" >
+
+                <TextView
+                    android:id="@+id/comment_stream_story_nickname"                    
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="author.nickname"
+                    android:textSize="13.33dp"
+                    android:textColor="#333333" />
+
+                <TextView
+                    android:id="@+id/comment_stream_story_realname"    
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13.33dp"
+                    android:textColor="#333333" 
+                    android:layout_toRightOf="@+id/comment_stream_story_nickname"
+                    android:tag="!author.realname" />
+            </RelativeLayout>
+
+            <!-- 시간 정보 -->
+
+            <TextView
+                android:id="@+id/comment_stream_story_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textSize="13.33dp"
+                android:textColor="#333333" 
+                android:layout_marginLeft="2.67dp"
+                android:tag="pubDate:pubdate"
+                android:text="1" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/comment_area_stroy_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/comment_area_stream_top"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:orientation="horizontal" >
+
+            <!-- 본문 영역 -->
+
+            <ImageView
+                android:id="@+id/comment_stream_stroy_comment_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6.67dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/icon_list_comment_a" />
+
+            <RelativeLayout
+                android:id="@+id/area_sticker_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/comment_me2_stream_long_body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:includeFontPadding="false"
+                    android:longClickable="true"
+                    android:layout_marginBottom="13.33dp"
+                    android:paddingTop="1.33dp"
+                    android:tag="!body:post"
+                    android:textColor="#000000"
+                    android:visibility="gone"
+                    android:textSize="13.33sp" />
+
+                <RelativeLayout
+                    android:id="@+id/area_visitor_sticker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/comment_me2_stream_long_body"
+                    android:layout_marginRight="3dp"
+                    android:tag="!sticker.image_url" >
+
+                    <m2.android.archetype.widget.UrlImageView
+                        android:id="@+id/visitor_sticker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:gravity="left"
+                        android:tag="sticker.image_url"
+                        m2:progressive="true"
+                        m2:scaleType="fitXY"
+                        m2:showProgress="true" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/comment_me2_stream_stroy_body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/area_visitor_sticker"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:includeFontPadding="false"
+                    android:longClickable="true"
+                    android:paddingTop="1.33dp"
+                    android:tag="!body:post"
+                    android:textColor="#000000"
+                    android:textSize="13.33sp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/comment_item_divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.33dp"
+        android:layout_below="@id/stream_comment_item"
+        android:background="#e5e5e5" />
+
+</RelativeLayout>

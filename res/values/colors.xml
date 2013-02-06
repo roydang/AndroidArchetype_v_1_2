@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="bg_screen">#ffffff</color>
+    <color name="bg_title">#ffffff</color>
+	<color name="bg_content">#f2f2f2</color>
+	<color name="transparent_background">#00000000</color>
+	<color name="menu_bg">#6350ac</color>
+	<color name="bg_activity">#F7F7F7</color>
+	<color name="bg_input_area">#FFFFFF</color>
+		
+    <color name="solid_red">#f00</color>
+	<color name="solid_white">#ffffff</color>
+	<color name="gallery_bg">#b3b3b3</color>
+	<color name="solid_purple">#ff5932b3</color>
+	<color name="solid_gray">#ff808080</color>
+	<color name="solid_black">#000000</color>
+
+	<color name="common_hint_text">#aaaaaa</color>
+	<color name="common_long_button_disable_text">#abaeb0</color>
+	<color name="common_long_button_enable_text">#31ad1c</color>
+	<color name="common_long_button_pressed_text">#ffffff</color>
+	    
+	<drawable name="category_selected">#f7f7f7</drawable>
+    <drawable name="translucent_background">#b0000000</drawable>
+	<drawable name="transparent_background">#00000000</drawable>
+	<drawable name="btn_pressed_background">#33b5e5</drawable>
+    <drawable name="common_rect_normal">#00000000</drawable>
+    <drawable name="board_rect_normal">#fff2f2f2</drawable>
+    <drawable name="invitee_background">#e5eee4</drawable>   
+    <drawable name="bg_dialog_bottom_button">#31ad1c</drawable>
+    <drawable name="pressed_member_item">#f5f5f5</drawable>
+    <drawable name="bg_white">#ffffff</drawable>
+    <drawable name="ab_bg_black">#aa000000</drawable>
+    <drawable name="actionbar_list_press">#353535</drawable>
+    
+	<color name="list_time_normal">#808080</color>
+    <color name="list_normal_org">#efefef</color>
+	<color name="list_normal_brt">#f5f5f5</color>
+    <color name="list_normal">#f5f5f5</color>
+    
+    <color name="list_stream_press">#33b5e5</color>
+    
+   	<color name="talk_room_bg">#f2f2f2</color>
+   	<color name="facebook_user_name">#3f5d9a</color>
+   	<color name="confing_item_text">#323537</color>
+   	
+   	<color name="comm_disabled_text">#656b6f</color>
+   	<color name="comm_normal_green_text">#31ad1c</color>
+   	<color name="comm_pressed_white_text">#ffffff</color>
+   	
+	<color name="solid_write_count">#d3d3d3</color>
+	<color name="profile_line">#2e2e2e</color>
+	<color name="dark_btn_text_disable">#6b6b6b</color>
+
+   	<drawable name="m3_tab_presses">#6350ac</drawable>
+
+	<!-- v3.0.0 글쓰기 -->
+   	<color name="quick_posting_count_text">#b9a5e1</color>
+   	
+	<!-- v3.0.0 글상세 -->
+   	<color name="theme_selected">#DDDDDD</color>
+   	<color name="list_bg_pressed">#D9C9FB</color>
+   	<color name="list_bg_hilight">#BFA5F5</color>	
+   	
+   	<color name="list_title_normal">#0f0f0f</color>
+    <color name="list_nickname_normal">#636363</color>
+</resources>

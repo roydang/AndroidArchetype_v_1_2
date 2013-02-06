@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    
+    <declare-styleable name="UrlImageView">
+        <attr name="coverResource" format="integer" />
+        <attr name="loadingCoverResource" format="integer" />
+        <attr name="maskResource" format="integer" />
+        <attr name="maskWidth" format="dimension" />
+        <attr name="maskHeight" format="dimension" />
+        <attr name="defaultResource" format="integer" />
+        <attr name="showProgress" format="boolean" />
+        <attr name="showFadeAnimation" format="boolean" />
+        <attr name="needAuthentication" format="boolean" />
+        <attr name="url" format="string" />
+        <attr name="scaleType" format="string" />
+        <attr name="thumbnailType" format="string" />
+        <attr name="samplingWidth" format="integer" />
+        <attr name="progressive" format="boolean" />
+    </declare-styleable>
+    
+    <declare-styleable name="TemplateListView">
+        <attr name="layoutId" format="integer" />
+        <attr name="refreshLayoutId" format="integer" />
+        <attr name="groupKey" format="string" />
+        <attr name="groupMode" format="string" />
+    </declare-styleable>
+    
+    <declare-styleable name="MultiphotoViewer">
+        <attr name="mode" format="string" />
+        <attr name="dividerCount" format="integer" />
+        <attr name="layoutMarginLeftDP" format="float" />
+        <attr name="layoutMarginRightDP" format="float" />
+        <attr name="photoMarginTop" format="integer" />
+        <attr name="photoMarginBottom" format="integer" />
+        <attr name="photoMarginLeft" format="integer" />
+        <attr name="photoMarginRight" format="integer" />        
+    </declare-styleable>
+    
+    <declare-styleable name="M2Progress">
+        <attr name="autostart" format="boolean" />    
+    </declare-styleable>
+    
+    <declare-styleable name="MaxHeightRelativeLayout">
+        <attr name="maxHeight" format="dimension" />    
+    </declare-styleable>
+    
+    <declare-styleable name="RoundProgress">
+        <attr name="progress" format="integer" />
+        <attr name="max" format="integer" />
+        <attr name="progressDrawable" format="integer" />
+        <attr name="track" format="integer" />
+    </declare-styleable>
+
+</resources>

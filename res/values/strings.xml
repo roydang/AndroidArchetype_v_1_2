@@ -2,6 +2,7 @@
 <resources>
     <string name="hello">Hello M2AndroidArchetype!</string>
     <string name="app_name">M2AndroidArchetype</string>
+<<<<<<< HEAD
     <string name="login_using_activity">Login using Activity</string>
     <string name="login_using_custom_fragment">Login using Custom Fragment</string>
     <string name="login_using_usersettingsfragment">Login using UserSettingsFragment</string>
@@ -22,4 +23,26 @@
     <string name="no_friends_selected">&lt;No friends selected&gt;</string>
     <string name="no_place_selected">&lt;No place selected&gt;</string>
     <string name="pick_seattle_place">Pick a Seattle Place</string>
+=======
+    
+    
+    <!--  date -->
+    <string name="rightnow">지금막</string>
+    <string name="beforeminute">분전</string>
+    <string name="beforehour">시간전</string>
+    <string name="beforeday">일전</string>       
+    <string name="list_dateformat">yyyy/M/d ah:mm</string>
+    <string name="list_dateformat_date2">M월 d일</string>
+    <string name="list_dateformat_date3">M.d ah:mm</string>
+    <string name="list_dateformat_date4">yyyy/MM/dd</string>
+    <string name="list_simple_dateformat">ah:mm</string>
+    <string name="am">오전 </string>
+    <string name="pm">오후 </string>
+    <string name="dateformat_year_month">%1$s년 %2$s월</string>
+    <string name="list_full_dateformat">yyyy년 MM월 dd일 a hh:mm</string>
+	<string name="date_format">yyyy년 M월 d일 EEEEEEEEEE</string>
+	
+	<!-- Template data parser -->
+	<string name="friend_count">친구 %1$s명</string>
+>>>>>>> 60d07e89aedd8195d39a99a40b7dfe437a78e591
 </resources>

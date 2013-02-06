@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <ImageView android:id="@+id/urlimageview_image"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
+    
+    <ImageView android:id="@+id/urlimageview_defaultimage"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"/>
+    
+    <RelativeLayout android:id="@+id/urlimageview_progress_wrap"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone">
+	    <com.nhn.android.band.customview.M2Progress android:id="@+id/urlimageview_progress"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"/>
+    </RelativeLayout>
+    
+    <ImageView android:id="@+id/urlimageview_coverimage"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"/>
+</RelativeLayout>

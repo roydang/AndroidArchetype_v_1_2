@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <include
+        android:id="@+id/include_post_wrap"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/include_stream_listview_post_item"
+        android:tag="#Post" />
+
+    <include
+        android:id="@+id/include_metoopost_wrap"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/include_post_wrap"
+        layout="@layout/include_stream_listview_me2post_item"
+        android:tag="#MetooPost" />
+
+    <include
+        android:id="@+id/include_comment_wrap"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/include_metoopost_wrap"
+        layout="@layout/include_stream_listview_comment_item"
+        android:tag="#Comment" />
+
+    <!-- 다음더보기 item -->
+    
+     <LinearLayout
+        android:id="@+id/empty_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="36.67dp"
+         android:background="@drawable/pattern_normal_bg"
+        android:tag="#EmptyViewItem"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/top_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line_friend" />
+
+        <ImageView
+            android:id="@+id/img_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="36.67dp"
+            android:background="@drawable/icon_stream_login_l" />
+
+        <RelativeLayout
+            android:id="@+id/blank_desc_story"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="13.33dp">
+
+            <TextView
+                android:id="@+id/top_desc"                
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="#666666"
+                android:textSize="10.67dp"/>
+
+            <ImageView
+                android:id="@+id/btn_write"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top_desc"
+                android:background="@drawable/icon_login_write_s" />
+
+            <TextView
+                android:id="@+id/bottom_desc"
+                android:textColor="#666666"
+                android:textSize="10.67dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top_desc"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="3.67dp"
+                android:layout_toRightOf="@id/btn_write" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/include_next_more_item"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/nextmoreitem_footer"
+        android:background="#ffffff"
+        android:tag="#ExtraListItem" />
+
+</RelativeLayout>
