@@ -2,4 +2,24 @@
 <resources>
     <string name="hello">Hello M2AndroidArchetype!</string>
     <string name="app_name">M2AndroidArchetype</string>
+    <string name="login_using_activity">Login using Activity</string>
+    <string name="login_using_custom_fragment">Login using Custom Fragment</string>
+    <string name="login_using_usersettingsfragment">Login using UserSettingsFragment</string>
+    <string name="login">Login</string>
+    <string name="instructions">Login to create a link to fetch account data</string>
+    <string name="logout">Log out</string>
+    <string name="applicationId">406121889477397</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="permission_not_granted">Unable to perform selected action because permissions were not granted.</string>
+    <string name="ok">OK</string>
+    <string name="hello_user">Hello %1$s!</string>
+    <string name="success">Success</string>
+    <string name="successfully_posted_post">Successfully posted \'%1$s\'.\nPost ID: %2$s</string>
+    <string name="error">Error</string>
+    <string name="status_update">Updating status for %1$s at %2$s</string>
+    <string name="photo_post">Photo Post</string>
+    <string name="you_picked">You picked:</string>
+    <string name="no_friends_selected">&lt;No friends selected&gt;</string>
+    <string name="no_place_selected">&lt;No place selected&gt;</string>
+    <string name="pick_seattle_place">Pick a Seattle Place</string>
 </resources>
