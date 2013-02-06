@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:m2="http://schemas.android.com/apk/res/m2.android.archetype.example"
+    android:id="@+id/stream_me2_post_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="13.33dp"
+    android:paddingRight="13.33dp"
+    android:tag="#MetooPost" >
+
+    <RelativeLayout
+        android:id="@+id/me2post_area_stream_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13.33dp">
+
+        <m2.android.archetype.widget.UrlImageView
+            android:id="@+id/me2post_stream_story_profile_photo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:clickable="true"
+            android:tag="post.author.face"
+            m2:scaleType="fitXY" />
+
+        <LinearLayout
+            android:id="@+id/me2post_area_stream_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13.33dp"
+            android:layout_toRightOf="@id/me2post_stream_story_profile_photo"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/me2post_stream_story_nickname"
+                style="@style/hdpi_fontstyle_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tag="post.author.nickname" />
+
+            <TextView
+                android:id="@+id/me2post_stream_story_by"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tag="!post.band_name"
+                android:textColor="#6350ac"
+                android:textSize="10.67dp" />
+        </LinearLayout>
+
+        <!-- 시간 정보 -->
+
+        <TextView
+            android:id="@+id/me2post_stream_story_time"
+            style="@style/hdpi_fontstyle_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2.67dp"
+            android:tag="post.pubDate:pubdate"
+            android:text="1" />
+    </RelativeLayout>
+
+    <!-- 포토 -->
+
+    <RelativeLayout
+        android:id="@+id/me2post_board_item_me2photo_wrap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/me2post_area_stream_top"
+        android:tag="!has_me2photo" >
+
+        <m2.android.archetype.widget.UrlImageView
+            android:id="@+id/me2post_stream_stroy_photo"
+            android:layout_width="293.33dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="13.33dp"
+            android:clickable="true"
+            android:tag="post.media.photoUrl"
+            m2:scaleType="fitXY" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/me2post_area_stroy_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/me2post_board_item_me2photo_wrap"
+        android:layout_marginTop="13.33dp"
+        android:orientation="horizontal"
+        android:tag="!post.textBody" >
+
+        <!-- 본문 영역 -->
+
+        <TextView
+            android:id="@+id/me2post_me2_stream_stroy_body"
+            style="@style/hdpi_fontstyle_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:includeFontPadding="false"
+            android:tag="!post.body:post" />
+    </LinearLayout>
+
+    <!-- 태그 영역 -->
+
+    <TextView
+        android:id="@+id/me2post_stream_stroy_tag"
+        style="@style/hdpi_fontstyle_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/me2post_area_stroy_body"
+        android:layout_marginTop="9.33dp"
+        android:tag="!post.tagText" />
+
+    <!-- 글감 영역 -->
+
+    <LinearLayout
+        android:id="@+id/me2post_area_story_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/me2post_stream_stroy_tag"
+        android:layout_marginTop="9.33dp"
+        android:orientation="horizontal" >
+
+        <!-- poi 위치정보 -->
+
+        <RelativeLayout
+            android:id="@+id/me2post_area_stream_poi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="!post.location" >
+
+            <ImageView
+                android:id="@+id/me2post_stream_story_poi_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_stream_poi" />
+
+            <TextView
+                android:id="@+id/me2post_stream_story_poi"
+                style="@style/hdpi_fontstyle_theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2.67dp"
+                android:layout_toRightOf="@id/me2post_stream_story_poi_icon"
+                android:tag="!post.location.name" />
+        </RelativeLayout>
+        <!-- 글감정보 -->
+
+        <RelativeLayout
+            android:id="@+id/me2post_area_stream_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13.33dp"
+            android:tag="!post.domain" >
+
+            <ImageView
+                android:id="@+id/me2post_stream_story_theme_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_stream_music" />
+
+            <TextView
+                android:id="@+id/me2post_stream_story_theme_desc"
+                style="@style/hdpi_fontstyle_theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2.67dp"
+                android:layout_toRightOf="@id/me2post_stream_story_theme_icon"
+                android:text="post.theme" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/me2post_area_stream_me2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/me2post_area_story_bottom"
+        android:layout_marginTop="9.33dp" >
+
+        <!-- 원문글 보기 영역 -->
+
+        <RelativeLayout
+            android:id="@+id/me2post_area_stream_pingback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:tag="!post.origin_post" >
+
+            <ImageView
+                android:id="@+id/me2post_stream_story_orgin_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_pingback" />
+
+            <TextView
+                android:id="@+id/me2post_stream_story_orgin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2.67dp"
+                android:layout_toRightOf="@id/me2post_stream_story_orgin_icon"
+                android:tag="post.origin_post.author.nickname"
+                android:textSize="10.67dp" />
+
+            <TextView
+                android:id="@+id/me2post_stream_story_orgin_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/me2post_stream_story_orgin"
+                android:text="원문글보기"
+                android:textSize="10.67dp" />
+        </RelativeLayout>
+
+        <!-- 미투, 댓글 아이콘 영역 -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal" >
+
+            <!-- 미투 아이콘 영역 -->
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_bg_white" >
+
+                <!-- 미투한 사람이 없을 경우 -->
+
+                <ImageView
+                    android:id="@+id/me2post_area_stream_story_me2_zero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_me2_0" />
+                <!-- 미투한 사람이 한명 이상일 경우 -->
+
+                <RelativeLayout
+                    android:id="@+id/me2post_area_stream_story_me2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <!-- 미투한 사람이 닉네임 -->
+
+                    <TextView
+                        android:id="@+id/me2post_stream_story_me2by"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:includeFontPadding="false"
+                        android:tag="metoo_by.nickname"
+                        android:textColor="#000000"
+                        android:textSize="10.67dp" />
+
+                    <ImageView
+                        android:id="@+id/me2post_stream_story_me2icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="3.33dp"
+                        android:layout_toRightOf="@id/me2post_stream_story_me2by"
+                        android:background="@drawable/icon_me2_1" />
+
+                    <TextView
+                        android:id="@+id/me2post_stream_story_me2count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="3.33dp"
+                        android:layout_toRightOf="@id/me2post_stream_story_me2icon"
+                        android:includeFontPadding="false"
+                        android:tag="post.metooCount"
+                        android:text="1"
+                        android:textColor="#000000"
+                        android:textSize="10.67dp" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <!-- 댓글 아이콘 영역 -->
+
+            <RelativeLayout
+                android:id="@+id/me2post_area_stream_story_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2.67dp"
+                android:background="@drawable/btn_bg_white" >
+
+                <!-- 댓글이 없을 경우 -->
+                <!-- android:tag="~post.commentsCount" -->
+
+                <ImageView
+                    android:id="@+id/me2post_area_stream_story_comment_zero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_comment_0" />
+                <!-- 댓글이 한개 이상일 경우 -->
+
+                <RelativeLayout
+                    android:id="@+id/me2post_area_stream_story_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <ImageView
+                        android:id="@+id/me2post_stream_story_commenticon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/me2post_stream_story_me2by"
+                        android:background="@drawable/icon_comment_1" />
+
+                    <TextView
+                        android:id="@+id/me2post_stream_story_commentcount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="3.33dp"
+                        android:layout_toRightOf="@id/me2post_stream_story_commenticon"
+                        android:tag="post.commentsCount"
+                        android:text="1"
+                        android:textColor="#000000"
+                        android:textSize="10.67dp" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

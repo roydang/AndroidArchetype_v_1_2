@@ -1,6 +1,7 @@
 package m2.android.archetype.example;
 
 import m2.android.archetype.example.AndroidArchetype_library.HelloAndroidActivity;
+import m2.android.archetype.example.robojuice.Roboguice2SimpleActivity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import android.widget.ListView;
 
 public class MainActivity extends ListActivity {
 
-	public static final String[] options = { "Roboguice2", "Roboguice2" };
+	public static final String[] options = { "Roboguice2", "OrmLiteExampleActivity" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +28,15 @@ public class MainActivity extends ListActivity {
 			default:
 			case 0:
 				intent = new Intent(this, Roboguice2SimpleActivity.class);
+				startActivity(intent);
 				break;
 			case 1:
-				intent = new Intent(this, Roboguice2SimpleActivity.class);
+//				intent = new Intent(this, OrmLiteExampleActivity.class);
 				break;
 		
 		}
 	
-		startActivity(intent);
+		
 	}
 
 }
