@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import m2.android.archetype.base.Me2dayApplication;
+import m2.android.archetype.base.M3Application;
 import m2.android.archetype.util.Logger;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -86,7 +86,7 @@ public class BaseSharedPrefModel {
 
 	public Context getContext() {
 		if (context == null) {
-			return Me2dayApplication.getCurrentApplication();
+			return M3Application.getCurrentApplication();
 		}
 
 		return context;

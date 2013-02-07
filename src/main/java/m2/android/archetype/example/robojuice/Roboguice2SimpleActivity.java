@@ -1,10 +1,7 @@
 package m2.android.archetype.example.robojuice;
 
+import m2.android.archetype.base.AABaseActivity;
 import m2.android.archetype.example.R;
-import m2.android.archetype.example.R.drawable;
-import m2.android.archetype.example.R.id;
-import m2.android.archetype.example.R.layout;
-import m2.android.archetype.example.R.string;
 import roboguice.inject.InjectResource;
 import roboguice.inject.InjectView;
 import android.graphics.drawable.Drawable;
@@ -14,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.inject.Inject;
-import com.nhn.android.archetype.base.AABaseActivity;
 
 public class Roboguice2SimpleActivity extends AABaseActivity {
 	

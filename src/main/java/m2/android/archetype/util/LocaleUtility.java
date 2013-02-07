@@ -8,7 +8,7 @@ package m2.android.archetype.util;
 
 import java.util.Locale;
 
-import m2.android.archetype.base.Me2dayApplication;
+import m2.android.archetype.base.M3Application;
 import android.content.Context;
 import android.content.res.Configuration;
 
@@ -77,7 +77,7 @@ public class LocaleUtility {
 
 	public static Locale getSystemLocale(Context context) {
 		if (context == null) {
-			context = Me2dayApplication.getCurrentApplication();
+			context = M3Application.getCurrentApplication();
 		}
 
 		if (context == null) {

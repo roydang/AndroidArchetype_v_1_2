@@ -25,7 +25,7 @@ public class AppBuildCheckFlag {
 	//########################################################### //
 	//###### 아래의 변수는 사내 배포시에 false 마켓 등록시엔 true  #### //
 	//########################################################### //
-	public static boolean VERSION_CHECK_MARKET_RELEASE_MODE = true;
+	public static boolean VERSION_CHECK_MARKET_RELEASE_MODE = false;
 	
 	
 	//############################################################### //

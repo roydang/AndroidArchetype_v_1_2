@@ -34,6 +34,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.nhn.android.archetype.base.object.ApiResponse;
 import com.nhn.android.archetype.base.object.BaseObj;
 import com.nhn.android.archetype.base.worker.JsonWorker;
+import com.nhn.android.archetype.base.worker.listener.JsonListener;
 import com.nhn.android.archetype.base.worker.listener.PreloadJsonListener;
 
 @SuppressLint("ParserError")
@@ -187,10 +188,10 @@ public class StreamStoryFragment extends BaseFragment {
 
 	private void loadData() {
 		UserSharedPrefModel userPref = UserSharedPrefModel.get();
-		userPref.setFullAuthToken("e60441b2282721247261d04b41b11f07");
+		userPref.setFullAuthToken("225c20762ad060957c4fc7358a72c998");
 		userPref.setUserId("chs_test");
 		String url = BaseProtocol.getStream();
-		JsonWorker jsonWorker = new JsonWorker(url, new PreloadJsonListener() {
+		JsonWorker jsonWorker = new JsonWorker(url, new JsonListener() {
 			
 			@Override
 			public void onSuccess(BaseObj response) {
@@ -208,14 +209,7 @@ public class StreamStoryFragment extends BaseFragment {
 				
 			}
 			
-			@Override
-			public void onPreload(BaseObj response, Date cachedDate) {
-				logger.d("on onPreload Sccess response=%s", response);
-				if (response != null) {
-					updatePostList(response);
-				}
-				
-			}
+		
 
 		
 		});

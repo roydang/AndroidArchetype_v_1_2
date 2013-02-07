@@ -12,7 +12,7 @@ import java.net.URLEncoder;
 
 import m2.android.archetype.api.BaseProtocolEnum.Me2dayURL;
 import m2.android.archetype.base.BaseConstants;
-import m2.android.archetype.base.Me2dayApplication;
+import m2.android.archetype.base.M3Application;
 import m2.android.archetype.base.ParameterConstants;
 import m2.android.archetype.util.CryptoUtility;
 import m2.android.archetype.util.LocaleUtility;
@@ -93,7 +93,7 @@ public class BaseProtocol {
 		} else {
 			String bandUrl;
 			if (streamDataType != BaseConstants.STREAM_DATA_TYPE_BAND) {
-				bandUrl = String.format(Me2dayURL.GET_POST.getURL().toString(), Me2dayApplication.getCurrentApplication().getLoginId()); 
+				bandUrl = String.format(Me2dayURL.GET_POST.getURL().toString(), M3Application.getCurrentApplication().getLoginId()); 
 			} else {
 				bandUrl = String.format(Me2dayURL.GET_POST.getURL().toString(), streamDataScope);
 			}
@@ -371,7 +371,7 @@ public class BaseProtocol {
 	public static String getLocationAgreeSettingUrl(boolean agree)	{
 		StringBuilder url = Me2dayURL.UPDATE_OZ_USER_SETTING.getURL();
 		
-		String userId = Me2dayApplication.getCurrentApplication().getLoginId();
+		String userId = M3Application.getCurrentApplication().getLoginId();
 		if (!TextUtils.isEmpty(userId)) {
 			BaseProtocolEnum.addParam(url, "user_id", userId);
 		}
@@ -389,12 +389,12 @@ public class BaseProtocol {
 	public static String getLocationAgreeInfoUrl()	{		
 		StringBuilder url = Me2dayURL.GET_OZ_USER_SETTING_INFO.getURL();
 		
-		String userId = Me2dayApplication.getCurrentApplication().getLoginId();
+		String userId = M3Application.getCurrentApplication().getLoginId();
 		if (!TextUtils.isEmpty(userId)) {
 			BaseProtocolEnum.addParam(url, "user_id", userId);
 		}
 		
-		Me2dayApplication application = Me2dayApplication.getCurrentApplication();
+		M3Application application = M3Application.getCurrentApplication();
 		if (!LocaleUtility.isLocaleKorean(application)) {
 			BaseProtocolEnum.addParam(url, ParameterConstants.PARAM_LOCALE, LocaleUtility.getSystemLocaleString(application));
 		}
@@ -452,7 +452,7 @@ public class BaseProtocol {
 		BaseProtocolEnum.addParam(url, "signup_location", signupLocation ? "1" : "0");
 			
 		// 이정우 차장님이 회원가입완료시 넣어달라고 했음
-		BaseProtocolEnum.addParam(url, "signup_from", "android_" + M2baseUtility.getVersionName(Me2dayApplication.getCurrentApplication()));	
+		BaseProtocolEnum.addParam(url, "signup_from", "android_" + M2baseUtility.getVersionName(M3Application.getCurrentApplication()));	
 		
 		
 		String urlText = url.toString();
@@ -702,7 +702,7 @@ public class BaseProtocol {
 		BaseProtocolEnum.addParam(url, "allow_outer_recommend", allowOuterRecommend ? "1" : "0");
 
 		// 이정우 차장님이 회원가입완료시 넣어달라고 했음
-		BaseProtocolEnum.addParam(url, "signup_from", "android_" + M2baseUtility.getVersionName(Me2dayApplication.getCurrentApplication()));	
+		BaseProtocolEnum.addParam(url, "signup_from", "android_" + M2baseUtility.getVersionName(M3Application.getCurrentApplication()));	
 		
 		if (TextUtils.isEmpty(phone)) {
 			BaseProtocolEnum.addParam(url, "phone", phone);
@@ -842,7 +842,7 @@ public class BaseProtocol {
 		if (!TextUtils.isEmpty(deviceId)) {
 			BaseProtocolEnum.addParam(buffer, ParameterConstants.PARAM_DEVICE_ID, deviceId);
 		}
-		BaseProtocolEnum.addParam(buffer, ParameterConstants.PARAM_LOCALE, LocaleUtility.getSystemLocaleString(Me2dayApplication.getCurrentApplication()));
+		BaseProtocolEnum.addParam(buffer, ParameterConstants.PARAM_LOCALE, LocaleUtility.getSystemLocaleString(M3Application.getCurrentApplication()));
 		BaseProtocolEnum.addParam(buffer, ParameterConstants.PARAM_RESOLUTION_TYPE, resolutionType);
 
 		Utility.appendSigUrl(buffer, false);
@@ -1187,7 +1187,7 @@ public class BaseProtocol {
 	public static String applyToChat(String chatId) {
 		StringBuilder url = Me2dayURL.APPLY_TO_CHAT.getURL();	
 		
-		String userId = Me2dayApplication.getCurrentApplication().getLoginId();
+		String userId = M3Application.getCurrentApplication().getLoginId();
 		BaseProtocolEnum.addParam(url, "user_id", userId);
 		BaseProtocolEnum.addParam(url, "me2live_chat_id", chatId);
 		Utility.appendSigUrl(url, false);
@@ -1974,7 +1974,7 @@ public class BaseProtocol {
 		StringBuilder url = Me2dayURL.POST_CATEGORY.getURL();
 		BaseProtocolEnum.addParam(url, "include_main_category", includeMainCategory);
 		BaseProtocolEnum.addParam(url, "band_id", bandId);
-		BaseProtocolEnum.addParam(url, ParameterConstants.PARAM_LOCALE, LocaleUtility.getSystemLocaleString(Me2dayApplication.getCurrentApplication()));
+		BaseProtocolEnum.addParam(url, ParameterConstants.PARAM_LOCALE, LocaleUtility.getSystemLocaleString(M3Application.getCurrentApplication()));
 
 		Utility.appendSigUrl(url, false);
 		

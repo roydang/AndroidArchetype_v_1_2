@@ -16,7 +16,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:visibility="gone">
-	    <com.nhn.android.band.customview.M2Progress android:id="@+id/urlimageview_progress"
+	    <m2.android.archetype.widget.M2Progress android:id="@+id/urlimageview_progress"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_centerInParent="true"/>

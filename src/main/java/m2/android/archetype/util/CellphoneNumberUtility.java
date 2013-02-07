@@ -1,7 +1,7 @@
 package m2.android.archetype.util;
 
 import m2.android.archetype.base.BaseConstants;
-import m2.android.archetype.base.Me2dayApplication;
+import m2.android.archetype.base.M3Application;
 import m2.android.archetype.config.AppBuildCheckFlag;
 import m2.android.archetype.sharedpref.UserSharedPrefModel;
 import android.content.Context;
@@ -386,7 +386,7 @@ public class CellphoneNumberUtility {
 	public static String getMyPhoneNumber(String countryCode, boolean useOrigin) {
 		String finalNum = null;
 		
-		TelephonyManager mTelephonyMgr = (TelephonyManager) Me2dayApplication.getCurrentApplication().getSystemService(Context.TELEPHONY_SERVICE);
+		TelephonyManager mTelephonyMgr = (TelephonyManager) M3Application.getCurrentApplication().getSystemService(Context.TELEPHONY_SERVICE);
 		String origPhoneNumber = mTelephonyMgr.getLine1Number();
 
 		//logger.d("getMyPhoneNumber(), countryCode(%s) useOrigin (%s) origPhoneNumber (%s)", countryCode, useOrigin, origPhoneNumber);
@@ -529,7 +529,7 @@ public class CellphoneNumberUtility {
 	public static String getIso3166AlphaCodeByMCC() {
 		String retVal = null;
 		try {
-			Me2dayApplication bandApp = Me2dayApplication.getCurrentApplication();
+			M3Application bandApp = M3Application.getCurrentApplication();
 	        TelephonyManager telMgr = (TelephonyManager) bandApp.getSystemService(Context.TELEPHONY_SERVICE); 
 	        //현재 등록된 망 사업자의 MCC(Mobile Country Code)에 대한 ISO 국가코드 반환
 	    	retVal = telMgr.getNetworkCountryIso().toUpperCase();  

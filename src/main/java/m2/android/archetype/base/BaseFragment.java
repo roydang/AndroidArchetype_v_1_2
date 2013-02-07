@@ -16,9 +16,7 @@ public class BaseFragment extends Fragment {
 	@Override
 	public void onAttach(Activity activity) {
 		printLifeCycleLog("onAttach");
-		Me2dayApplication.setCurrentApplication(activity);
-		Me2dayApplication.setCurrentActivity(activity);
-		Me2dayApplication.setCurrentFragmet(this);
+		M3Application.setCurrentApplication(activity);
 		super.onAttach(activity);
 	}
 

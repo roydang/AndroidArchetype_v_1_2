@@ -1,6 +1,7 @@
 package m2.android.archetype.example;
 
 import m2.android.archetype.example.AndroidArchetype_library.HelloAndroidActivity;
+import m2.android.archetype.example.ormlite.OrmLitePullToRefreshActivity;
 import m2.android.archetype.example.robojuice.Roboguice2SimpleActivity;
 import android.app.ListActivity;
 import android.content.Intent;
@@ -11,7 +12,7 @@ import android.widget.ListView;
 
 public class MainActivity extends ListActivity {
 
-	public static final String[] options = { "Roboguice2", "OrmLiteExampleActivity" };
+	public static final String[] options = { "Roboguice2", "OrmLitePullToRefreshActivity" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,8 @@ public class MainActivity extends ListActivity {
 				startActivity(intent);
 				break;
 			case 1:
-//				intent = new Intent(this, OrmLiteExampleActivity.class);
+				intent = new Intent(this, OrmLitePullToRefreshActivity.class);
+				startActivity(intent);
 				break;
 		
 		}

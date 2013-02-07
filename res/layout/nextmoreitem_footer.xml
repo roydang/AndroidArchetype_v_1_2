@@ -8,7 +8,7 @@
     android:background="#f7f7f7"
     android:tag="#ExtraListItem" >
 
-    <com.nhn.android.me2day.customview.M2Progress
+    <m2.android.archetype.widget.M2Progress
         android:id="@+id/item_more_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

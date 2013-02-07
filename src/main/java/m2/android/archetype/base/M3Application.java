@@ -12,9 +12,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
 
 import com.nhn.android.archetype.base.AABaseApplication;
 
@@ -24,14 +24,12 @@ import com.nhn.android.archetype.base.AABaseApplication;
  * @author telltale
  * 
  */
-public class Me2dayApplication extends AABaseApplication {
+public class M3Application extends AABaseApplication {
 
-	private static Logger logger = Logger.getLogger(Me2dayApplication.class);
+	private static Logger logger = Logger.getLogger(M3Application.class);
 	private String userAgent = null; 
 	
-	private static Me2dayApplication instance;
-	private static Activity activity;
-	private static Fragment fragment;
+	private static M3Application instance;
 	
 	private static String externalStorageDirectory;
 	private static String externalStorageMe2dayDirectory;
@@ -44,8 +42,13 @@ public class Me2dayApplication extends AABaseApplication {
 			externalStorageMe2dayDirectory = Environment.getExternalStorageDirectory().getAbsolutePath() + "/me2day";
 		}
 	}
-
-	public static Me2dayApplication getCurrentApplication() {
+	@Override
+	public void onCreate() {
+		super.onCreate();
+		setCurrentApplication(this);
+	
+	}
+	public static M3Application getCurrentApplication() {
 		return instance;
 	}
 	
@@ -53,7 +56,7 @@ public class Me2dayApplication extends AABaseApplication {
 		return getCurrentApplication().getApplicationContext();
 	}
 	
-	public static Me2dayApplication getCurrentApplication(Context context) {
+	public static M3Application getCurrentApplication(Context context) {
 		setCurrentApplication(context);
 		
 		return instance;
@@ -61,25 +64,10 @@ public class Me2dayApplication extends AABaseApplication {
 
 	public static void setCurrentApplication(Context context) {
 		logger.d("setCurrentApplication: %s", context.getApplicationContext().getClass().getSimpleName());
-		instance = (Me2dayApplication) context.getApplicationContext();
+		instance = (M3Application) context.getApplicationContext();
 	}
 	
-	public static Activity getCurrentActivity() {
-		
-		return activity;
-	}
-	
-	public static void setCurrentActivity(Activity currentactivity) {
-		logger.d("setCurrentActivity: %s", currentactivity.getClass().getName());
-		activity = currentactivity;
-	}
-	
-	public static void setCurrentFragmet(Fragment currentFragment) {
-		fragment = currentFragment;
-	}
-	public static Fragment getCurrentFragmet() {
-		return fragment;
-	}
+
 	public static Handler getCurrentHandler() {
 		return instance.getHandler();
 	}
@@ -154,8 +142,10 @@ public class Me2dayApplication extends AABaseApplication {
 		if (externalCacheFolder == null) {
 			externalCacheFolder = new File(externalStorageDirectory + getPackageName() + "/cache");
 
+			logger.d("##externalCacheFolder.exists(%s)", externalCacheFolder.exists());
 			if (!externalCacheFolder.exists()) {
 				boolean result = externalCacheFolder.mkdirs();
+				logger.d("##externalCacheFolder.result(%s)", result);
 				if (result) {
 					// do something
 				}

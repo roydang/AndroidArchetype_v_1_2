@@ -6,7 +6,7 @@
  */
 package m2.android.archetype.widget;
 
-import m2.android.archetype.base.Me2dayApplication;
+import m2.android.archetype.base.M3Application;
 import m2.android.archetype.example.R;
 import m2.android.archetype.util.AppInfoUtility;
 import m2.android.archetype.util.Logger;
@@ -649,7 +649,7 @@ public class UrlImageView extends ThemeRelativeLayout {
 	}
 	
 	public void setImageResourceId(int resId) {
-		setImageDrawable(Me2dayApplication.getCurrentApplication().getResources().getDrawable(resId));
+		setImageDrawable(M3Application.getCurrentApplication().getResources().getDrawable(resId));
 	}
 	
 	public void setImageDrawable(Drawable drawable) {

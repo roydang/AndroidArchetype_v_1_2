@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import m2.android.archetype.base.BaseConstants;
-import m2.android.archetype.base.Me2dayApplication;
+import m2.android.archetype.base.M3Application;
 import m2.android.archetype.example.R;
 import m2.android.archetype.util.Logger;
 import m2.android.archetype.util.Utility;
@@ -141,9 +141,9 @@ public class DateUtility {
 		String tmp1 = formatter.format(pubDate);
 		String dateString = null;
 
-		if (Me2dayApplication.getCurrentApplication() != null) {
-			String tmp2 = tmp1.replace("AM", Me2dayApplication.getCurrentApplication().getString(R.string.am));
-			dateString = tmp2.replace("PM", Me2dayApplication.getCurrentApplication().getString(R.string.pm));
+		if (M3Application.getCurrentApplication() != null) {
+			String tmp2 = tmp1.replace("AM", M3Application.getCurrentApplication().getString(R.string.am));
+			dateString = tmp2.replace("PM", M3Application.getCurrentApplication().getString(R.string.pm));
 		} else {
 			dateString = tmp1;
 		}

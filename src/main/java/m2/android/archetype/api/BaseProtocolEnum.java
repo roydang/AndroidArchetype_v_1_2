@@ -2,7 +2,7 @@ package m2.android.archetype.api;
 
 import java.net.URLEncoder;
 
-import m2.android.archetype.base.Me2dayApplication;
+import m2.android.archetype.base.M3Application;
 import m2.android.archetype.config.AppBuildCheckFlag;
 import m2.android.archetype.sharedpref.UserSharedPrefModel;
 import m2.android.archetype.util.Logger;
@@ -277,10 +277,10 @@ public class BaseProtocolEnum {
 				if (current - statgingLastNotiTime > 80000) {
 					statgingLastNotiTime = current;
 
-					if (Me2dayApplication.getCurrentApplication() != null) {
+					if (M3Application.getCurrentApplication() != null) {
 						int idx = (int)((Math.random() * 100) % 4);
 
-						final Toast toast = Toast.makeText(Me2dayApplication.getCurrentApplication(), stagingWarningMsgs[idx], Toast.LENGTH_SHORT);
+						final Toast toast = Toast.makeText(M3Application.getCurrentApplication(), stagingWarningMsgs[idx], Toast.LENGTH_SHORT);
 						toast.show();
 
 						new Handler().postDelayed(new Runnable() {
