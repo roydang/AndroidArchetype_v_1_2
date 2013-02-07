@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="hello">Hello M2AndroidArchetype!</string>
     <string name="app_name">M2AndroidArchetype</string>
-    
-    
-    <!--  date -->
+    <string name="login_using_activity">Login using Activity</string>
+    <string name="login_using_custom_fragment">Login using Custom Fragment</string>
+    <string name="login_using_usersettingsfragment">Login using UserSettingsFragment</string>
+    <string name="login">Login</string>
+    <string name="instructions">Login to create a link to fetch account data</string>
+    <string name="logout">Log out</string>
+    <string name="applicationId">406121889477397</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="permission_not_granted">Unable to perform selected action because permissions were not granted.</string>
+    <string name="ok">OK</string>
+    <string name="hello_user">Hello %1$s!</string>
+    <string name="success">Success</string>
+    <string name="successfully_posted_post">Successfully posted \'%1$s\'.\nPost ID: %2$s</string>
+    <string name="error">Error</string>
+    <string name="status_update">Updating status for %1$s at %2$s</string>
+    <string name="photo_post">Photo Post</string>
+    <string name="you_picked">You picked:</string>
+    <string name="no_friends_selected">&lt;No friends selected&gt;</string>
+    <string name="no_place_selected">&lt;No place selected&gt;</string>
+    <string name="pick_seattle_place">Pick a Seattle Place</string>
+    <!-- date -->
     <string name="rightnow">지금막</string>
     <string name="beforeminute">분전</string>
     <string name="beforehour">시간전</string>
-    <string name="beforeday">일전</string>       
+    <string name="beforeday">일전</string>
     <string name="list_dateformat">yyyy/M/d ah:mm</string>
     <string name="list_dateformat_date2">M월 d일</string>
     <string name="list_dateformat_date3">M.d ah:mm</string>
@@ -18,8 +37,9 @@
     <string name="pm">오후 </string>
     <string name="dateformat_year_month">%1$s년 %2$s월</string>
     <string name="list_full_dateformat">yyyy년 MM월 dd일 a hh:mm</string>
-	<string name="date_format">yyyy년 M월 d일 EEEEEEEEEE</string>
-	
-	<!-- Template data parser -->
-	<string name="friend_count">친구 %1$s명</string>
+    <string name="date_format">yyyy년 M월 d일 EEEEEEEEEE</string>
+
+    <!-- Template data parser -->
+    <string name="friend_count">친구 %1$s명</string>
+
 </resources>

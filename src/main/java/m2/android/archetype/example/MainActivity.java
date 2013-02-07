@@ -1,6 +1,6 @@
 package m2.android.archetype.example;
 
-import m2.android.archetype.example.AndroidArchetype_library.HelloAndroidActivity;
+import m2.android.archetype.example.facebook.HelloFacebookSampleActivity;
 import m2.android.archetype.example.ormlite.OrmLitePullToRefreshActivity;
 import m2.android.archetype.example.robojuice.Roboguice2SimpleActivity;
 import android.app.ListActivity;
@@ -9,16 +9,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+//github.com/roydang/AndroidArchetype_v_1_2.git
 
 public class MainActivity extends ListActivity {
 
-	public static final String[] options = { "Roboguice2", "OrmLitePullToRefreshActivity" };
+	public static final String[] options = { "Roboguice2", "OrmLiteExampleActivity", "withFacebook"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options));
-		HelloAndroidActivity.testLibrary();
 	}
 	
 	@Override
@@ -35,10 +35,12 @@ public class MainActivity extends ListActivity {
 				intent = new Intent(this, OrmLitePullToRefreshActivity.class);
 				startActivity(intent);
 				break;
+			case 2:
+				intent = new Intent(this, HelloFacebookSampleActivity.class);
+				startActivity(intent);
+				break;
 		
 		}
-	
-		
 	}
 
 }
