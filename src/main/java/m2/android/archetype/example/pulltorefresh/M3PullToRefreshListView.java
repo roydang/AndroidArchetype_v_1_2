@@ -1,4 +1,4 @@
-package m2.android.archetype.example.ormlite;
+package m2.android.archetype.example.pulltorefresh;
 
 import java.util.ArrayList;
 import java.util.List;

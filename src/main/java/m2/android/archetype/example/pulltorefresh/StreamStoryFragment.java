@@ -1,4 +1,4 @@
-package m2.android.archetype.example.ormlite;
+package m2.android.archetype.example.pulltorefresh;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,12 +7,12 @@ import java.util.List;
 import m2.android.archetype.api.BaseProtocol;
 import m2.android.archetype.base.BaseFragment;
 import m2.android.archetype.example.R;
-import m2.android.archetype.example.ormlite.object.Media;
-import m2.android.archetype.example.ormlite.object.MetooPost;
-import m2.android.archetype.example.ormlite.object.Multimedia;
-import m2.android.archetype.example.ormlite.object.Post;
-import m2.android.archetype.example.ormlite.object.Stream;
-import m2.android.archetype.example.ormlite.object.Streams;
+import m2.android.archetype.example.pulltorefresh.object.Media;
+import m2.android.archetype.example.pulltorefresh.object.MetooPost;
+import m2.android.archetype.example.pulltorefresh.object.Multimedia;
+import m2.android.archetype.example.pulltorefresh.object.Post;
+import m2.android.archetype.example.pulltorefresh.object.Stream;
+import m2.android.archetype.example.pulltorefresh.object.Streams;
 import m2.android.archetype.sharedpref.UserSharedPrefModel;
 import m2.android.archetype.template.TemplateListViewEventListener;
 import m2.android.archetype.util.Logger;
@@ -188,7 +188,7 @@ public class StreamStoryFragment extends BaseFragment {
 
 	private void loadData() {
 		UserSharedPrefModel userPref = UserSharedPrefModel.get();
-		userPref.setFullAuthToken("225c20762ad060957c4fc7358a72c998");
+		userPref.setFullAuthToken("86df10a4d3fcfea85a82792ab49520ba");
 		userPref.setUserId("chs_test");
 		String url = BaseProtocol.getStream();
 		JsonWorker jsonWorker = new JsonWorker(url, new JsonListener() {

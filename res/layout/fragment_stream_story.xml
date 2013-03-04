@@ -6,7 +6,7 @@
 
 
 
-    <m2.android.archetype.example.ormlite.M3PullToRefreshListView
+    <m2.android.archetype.example.pulltorefresh.M3PullToRefreshListView
         android:id="@+id/stream_story_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

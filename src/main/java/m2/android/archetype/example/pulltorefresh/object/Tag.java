@@ -1,4 +1,4 @@
-package m2.android.archetype.example.ormlite.object;
+package m2.android.archetype.example.pulltorefresh.object;
 import android.os.Parcel;
 import android.os.Parcelable;
 

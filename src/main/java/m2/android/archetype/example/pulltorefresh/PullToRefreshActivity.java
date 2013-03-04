@@ -1,4 +1,4 @@
-package m2.android.archetype.example.ormlite;
+package m2.android.archetype.example.pulltorefresh;
 
 
 import m2.android.archetype.base.AABaseFragmentActivity;
@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 
 
 
-public class OrmLitePullToRefreshActivity extends AABaseFragmentActivity {
+public class PullToRefreshActivity extends AABaseFragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {	
 		super.onCreate(savedInstanceState);

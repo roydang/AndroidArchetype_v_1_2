@@ -1,4 +1,4 @@
-package m2.android.archetype.example.ormlite.object;
+package m2.android.archetype.example.pulltorefresh.object;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import com.nhn.android.archetype.base.object.BaseObj;
 
 @SuppressWarnings("unchecked")
-public class Author extends BaseObj implements Parcelable {
+public class MetooBy extends BaseObj implements Parcelable {
 	private static final String ID = "id";
 	private static final String NICKNAME = "nickname";
 	private static final String FACE = "face";
@@ -14,6 +14,8 @@ public class Author extends BaseObj implements Parcelable {
 	private static final String RELATIONSHIP = "relationship";
 	private static final String REALNAME = "realname";
 	private static final String HOMEPAGE = "homePage";
+	
+	
 	
 	
 	public String getId() {
@@ -84,7 +86,7 @@ public class Author extends BaseObj implements Parcelable {
 		return 0;
 	}
 
-	public static Parcelable.Creator<Author> getCreator() {
+	public static Parcelable.Creator<MetooBy> getCreator() {
 		return CREATOR;
 	}
 
@@ -99,9 +101,9 @@ public class Author extends BaseObj implements Parcelable {
 		dest.writeString(this.getHomePage());
 	}
 
-	public static final Parcelable.Creator<Author> CREATOR = new Creator<Author>() {
-		public Author createFromParcel(Parcel source) {
-			Author obj = new Author();
+	public static final Parcelable.Creator<MetooBy> CREATOR = new Creator<MetooBy>() {
+		public MetooBy createFromParcel(Parcel source) {
+			MetooBy obj = new MetooBy();
 	
 			obj.setId(source.readString());
 			obj.setNickname(source.readString());
@@ -113,8 +115,8 @@ public class Author extends BaseObj implements Parcelable {
 			return obj;
 		}
 
-		public Author[] newArray(int size) {
-			return new Author[size];
+		public MetooBy[] newArray(int size) {
+			return new MetooBy[size];
 		}
 	};
 }

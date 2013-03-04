@@ -37,7 +37,9 @@
       </intent-filter>
     </activity>
 	 <activity android:name=".robojuice.Roboguice2SimpleActivity"/>   
-	 <activity android:name=".ormlite.OrmLitePullToRefreshActivity"/> 
+	 <activity android:name=".pulltorefresh.PullToRefreshActivity"/> 
+	 <activity android:name=".simplecursor.CursorAdapterActivity"/> 
+	 <activity android:name=".ormlite.OrmCursorAdapterActivity"/> 
 	 <activity android:name=".facebook.SessionLoginSampleActivity" />
 	 <activity android:name=".facebook.LoginUsingActivityActivity" />
 	 <activity android:name=".facebook.LoginUsingLoginFragmentActivity" />

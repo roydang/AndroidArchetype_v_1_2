@@ -1,4 +1,4 @@
-package m2.android.archetype.example.ormlite.object;
+package m2.android.archetype.example.pulltorefresh.object;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import android.os.Parcelable;
 import com.nhn.android.archetype.base.object.BaseObj;
 
 @SuppressWarnings("unchecked")
-public class Post extends BaseObj implements Parcelable {
+public class PostInfo extends BaseObj implements Parcelable {
 	private static final String SCOPE = "scope";
 	private static final String PERMALINK = "permalink";
 	private static final String PLINK = "plink";
@@ -40,10 +40,11 @@ public class Post extends BaseObj implements Parcelable {
 	private static final String METOO_BY = "metoo_by";
 	private static final String MULTIMEDIA = "multimedia";
 	private static final String NOTE = "note";
+	private static final String POSTID = "postId";
 	private static final String IDENTIFIER = "identifier";
-	private static final String POST_ID = "post_id";
 	private static final String BAND_ID = "band_id";
 	private static final String BAND_NAME = "band_name";
+	
 	
 	
 	
@@ -110,11 +111,11 @@ public class Post extends BaseObj implements Parcelable {
 	}
 	
 	
-	public OriginPost getOriginPost() {
-		return (OriginPost) getBaseObj(ORIGIN_POST, OriginPost.class);
+	public String getOriginPost() {
+		return getString(ORIGIN_POST);
 	}
 
-	public void setOriginPost(OriginPost originPost) {
+	public void setOriginPost(String originPost) {
 		put(ORIGIN_POST, originPost);
 	}
 	
@@ -152,6 +153,24 @@ public class Post extends BaseObj implements Parcelable {
 
 	public void setPubDate(String pubDate) {
 		put(PUBDATE, pubDate);
+	}
+	
+	
+	public String getSearchKeyword() {
+		return getString(SEARCHKEYWORD);
+	}
+
+	public void setSearchKeyword(String searchKeyword) {
+		put(SEARCHKEYWORD, searchKeyword);
+	}
+	
+	
+	public int getSearchCount() {
+		return getInt(SEARCHCOUNT);
+	}
+
+	public void setSearchCount(int searchCount) {
+		put(SEARCHCOUNT, searchCount);
 	}
 	
 	
@@ -272,6 +291,15 @@ public class Post extends BaseObj implements Parcelable {
 	}
 	
 	
+	public String getMetooBy() {
+		return getString(METOO_BY);
+	}
+
+	public void setMetooBy(String metooBy) {
+		put(METOO_BY, metooBy);
+	}
+	
+	
 	public List<Multimedia> getMultimedia() {
 		return (List<Multimedia>) getList(MULTIMEDIA, Multimedia.class);
 	}
@@ -290,6 +318,15 @@ public class Post extends BaseObj implements Parcelable {
 	}
 	
 	
+	public String getPostId() {
+		return getString(POSTID);
+	}
+
+	public void setPostId(String postId) {
+		put(POSTID, postId);
+	}
+	
+	
 	public String getIdentifier() {
 		return getString(IDENTIFIER);
 	}
@@ -299,14 +336,6 @@ public class Post extends BaseObj implements Parcelable {
 	}
 	
 	
-	public String getPostId() {
-		return getString(POST_ID);
-	}
-
-	public void setPostId(String postId) {
-		put(POST_ID, postId);
-	}
-	
 	public String getBandId() {
 		return getString(BAND_ID);
 	}
@@ -315,13 +344,6 @@ public class Post extends BaseObj implements Parcelable {
 		put(BAND_ID, bandId);
 	}
 	
-	public String getMetooBy() {
-		return getString(METOO_BY);
-	}
-
-	public void setMetooBy(String metooBy) {
-		put(METOO_BY, metooBy);
-	}
 	
 	public String getBandName() {
 		return getString(BAND_NAME);
@@ -331,17 +353,18 @@ public class Post extends BaseObj implements Parcelable {
 		put(BAND_NAME, bandName);
 	}
 	
+
 	
 	public int describeContents() {
 		return 0;
 	}
 
-	public static Parcelable.Creator<Post> getCreator() {
+	public static Parcelable.Creator<PostInfo> getCreator() {
 		return CREATOR;
 	}
 
 	public void writeToParcel(Parcel dest, int flags) {
-		
+	
 		dest.writeString(this.getScope());
 		dest.writeString(this.getPermalink());
 		dest.writeString(this.getPlink());
@@ -349,11 +372,13 @@ public class Post extends BaseObj implements Parcelable {
 		dest.writeString(this.getTextBody());
 		dest.writeString(this.getKind());
 		dest.writeString(this.getIcon());
-		dest.writeParcelable((Parcelable)this.getOriginPost(), flags);
+		dest.writeString(this.getOriginPost());
 		dest.writeString(this.getTagText());
 		dest.writeList(this.getTags());
 		dest.writeString(this.getMe2dayPage());
 		dest.writeString(this.getPubDate());
+		dest.writeString(this.getSearchKeyword());
+		dest.writeInt(this.getSearchCount());
 		dest.writeInt(this.getCommentsCount());
 		dest.writeInt(this.getMetooCount());
 		dest.writeInt(this.getCommentClosed() ? 1 : 0);
@@ -370,15 +395,15 @@ public class Post extends BaseObj implements Parcelable {
 		dest.writeString(this.getMetooBy());
 		dest.writeList(this.getMultimedia());
 		dest.writeString(this.getNote());
-		dest.writeString(this.getIdentifier());
 		dest.writeString(this.getPostId());
+		dest.writeString(this.getIdentifier());
 		dest.writeString(this.getBandId());
 		dest.writeString(this.getBandName());
 	}
 
-	public static final Parcelable.Creator<Post> CREATOR = new Creator<Post>() {
-		public Post createFromParcel(Parcel source) {
-			Post obj = new Post();
+	public static final Parcelable.Creator<PostInfo> CREATOR = new Creator<PostInfo>() {
+		public PostInfo createFromParcel(Parcel source) {
+			PostInfo obj = new PostInfo();
 	
 			obj.setScope(source.readString());
 			obj.setPermalink(source.readString());
@@ -387,11 +412,13 @@ public class Post extends BaseObj implements Parcelable {
 			obj.setTextBody(source.readString());
 			obj.setKind(source.readString());
 			obj.setIcon(source.readString());
-			obj.setOriginPost((OriginPost)source.readParcelable(OriginPost.class.getClassLoader()));
+			obj.setOriginPost(source.readString());
 			obj.setTagText(source.readString());
 			obj.setTags(null); ArrayList<Tag> tagList = new ArrayList<Tag>(); source.readList(tagList, Tag.class.getClassLoader()); obj.setTags(tagList);
 			obj.setMe2dayPage(source.readString());
 			obj.setPubDate(source.readString());
+			obj.setSearchKeyword(source.readString());
+			obj.setSearchCount(source.readInt());
 			obj.setCommentsCount(source.readInt());
 			obj.setMetooCount(source.readInt());
 			obj.setCommentClosed(source.readInt() == 0 ? false : true);
@@ -408,15 +435,15 @@ public class Post extends BaseObj implements Parcelable {
 			obj.setMetooBy(source.readString());
 			obj.setMultimedia(null); ArrayList<Multimedia> multimediaList = new ArrayList<Multimedia>(); source.readList(multimediaList, Multimedia.class.getClassLoader()); obj.setMultimedia(multimediaList);
 			obj.setNote(source.readString());
-			obj.setIdentifier(source.readString());
 			obj.setPostId(source.readString());
+			obj.setIdentifier(source.readString());
 			obj.setBandId(source.readString());
 			obj.setBandName(source.readString());
 			return obj;
 		}
 
-		public Post[] newArray(int size) {
-			return new Post[size];
+		public PostInfo[] newArray(int size) {
+			return new PostInfo[size];
 		}
 	};
 }
