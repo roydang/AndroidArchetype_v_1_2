@@ -5,10 +5,7 @@ import com.j256.ormlite.field.DatabaseField;
 public class PostDBData {
 	
 	
-	@DatabaseField(generatedId = true, columnName = "_id")
-	int id;
-	
-	@DatabaseField(unique = true)
+	@DatabaseField(columnName = "_id", id = true)
 	String post_id;
 
 	@DatabaseField

@@ -45,14 +45,14 @@ public class DBAdapter extends CursorAdapter {
 		
 		logger.d("bindView url[ ] body[%s] tag[%s]",   body, tag);
 		
-		aq.recycle(view);
-		if (aq.shouldDelay(position, view, holder.viewGroup, url)) {
-			aq.id(holder.face).clear();
+		AQuery aquery = aq.recycle(view);
+		if (aquery.shouldDelay(position, view, holder.viewGroup, url)) {
+			aquery.id(holder.face).clear();
 		} else {
-			aq.id(holder.face).image(url, true, true);
+			aquery.id(holder.face).image(url, true, true);
 		}
-		aq.id(holder.body).text(body);
-		aq.id(holder.tag).text(tag);
+		aquery.id(holder.body).text(body);
+		aquery.id(holder.tag).text(tag);
 		
 		
 		
@@ -74,7 +74,7 @@ public class DBAdapter extends CursorAdapter {
 		holder.tag = (TextView)v.findViewById(R.id.tag);
 		holder.viewGroup = parent;
 //		holder.photoLayout = (LinearLayout)
-//		v.setTag(holder);
+		v.setTag(holder);
 		
 		return v;
 	}
