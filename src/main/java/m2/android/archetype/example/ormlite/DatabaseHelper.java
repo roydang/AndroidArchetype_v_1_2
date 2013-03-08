@@ -2,8 +2,8 @@ package m2.android.archetype.example.ormlite;
 
 import java.sql.SQLException;
 
-import m2.android.archetype.example.pulltorefresh.object.Author;
 import m2.android.archetype.example.pulltorefresh.object.AuthorDBData;
+import m2.android.archetype.example.pulltorefresh.object.FacebookFriendsDBData;
 import m2.android.archetype.example.pulltorefresh.object.PostDBData;
 import m2.android.archetype.util.Logger;
 import android.content.Context;
@@ -21,6 +21,7 @@ public class DatabaseHelper extends BaseDatabaseHelper {
 	private Dao<SimpleData, Integer> simpleDao = null;
 	private Dao<PostDBData, Integer> postDao = null;
 	private Dao<AuthorDBData, Integer> authorDao = null;
+	private Dao<FacebookFriendsDBData, Integer> facebookFriendsDao = null;
 
 	public DatabaseHelper(Context context) {
 		super(context);
@@ -39,6 +40,7 @@ public class DatabaseHelper extends BaseDatabaseHelper {
 			TableUtils.createTable(connectionSource, SimpleData.class);
 			TableUtils.createTable(connectionSource, PostDBData.class);
 			TableUtils.createTable(connectionSource, AuthorDBData.class);
+			TableUtils.createTable(connectionSource, FacebookFriendsDBData.class);
 		} catch (SQLException e) {
 			logger.e(e);
 		}
@@ -74,6 +76,7 @@ public class DatabaseHelper extends BaseDatabaseHelper {
 			TableUtils.dropTable(connectionSource, SimpleData.class, true);
 			TableUtils.dropTable(connectionSource, PostDBData.class, true);
 			TableUtils.dropTable(connectionSource, AuthorDBData.class, true);
+			TableUtils.dropTable(connectionSource, FacebookFriendsDBData.class, true);
 			onCreate(db, connectionSource);
 		} catch (SQLException e) {
 			Log.e(DatabaseHelper.class.getName(), "Can't drop databases", e);
@@ -87,6 +90,7 @@ public class DatabaseHelper extends BaseDatabaseHelper {
 			TableUtils.dropTable(connectionSource, SimpleData.class, true);
 			TableUtils.dropTable(connectionSource, PostDBData.class, true);
 			TableUtils.dropTable(connectionSource, AuthorDBData.class, true);
+			TableUtils.dropTable(connectionSource, FacebookFriendsDBData.class, true);
 			onCreate(db, connectionSource);
 		} catch (SQLException e) {
 			Log.e(DatabaseHelper.class.getName(), "Can't drop databases", e);
@@ -112,6 +116,12 @@ public class DatabaseHelper extends BaseDatabaseHelper {
 			authorDao = getDao(AuthorDBData.class);
 		}
 		return authorDao;
+	}
+	public Dao<FacebookFriendsDBData, Integer> getFacebookFriendsDao() throws SQLException {
+		if (facebookFriendsDao == null) {
+			facebookFriendsDao = getDao(FacebookFriendsDBData.class);
+		}
+		return facebookFriendsDao;
 	}
 	/**
 	 * Close the database connections and clear any cached DAOs.

@@ -12,10 +12,6 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-import com.nhn.android.archetype.base.AABaseApplicationOrg.BaseApplicationListener;
-import com.nhn.android.archetype.base.image.ImageHelper;
-import com.nhn.android.archetype.base.image.ImageLoadManager;
-
 /**
  * Activity의 life-cycle 단계마다 처리해줘야하는 로직을 처리한다.
  * @author telltale

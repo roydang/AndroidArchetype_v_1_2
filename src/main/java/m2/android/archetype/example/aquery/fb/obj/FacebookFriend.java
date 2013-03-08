@@ -19,6 +19,7 @@
  ******************************************************************************/
 package m2.android.archetype.example.aquery.fb.obj;
 
+import m2.android.archetype.util.StringUtility;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -39,6 +40,7 @@ public class FacebookFriend extends BaseObj implements Parcelable {
 	private static final String ID = "id";
 	private static final String NAME = "name";
 	private static final String URL = "url";
+	private static final String IS_SILHOUETTE = "is_silhouette";
 	private static final String IS_CHECKED = "is_checked";
 	
 	public String getFbFriendId() {
@@ -58,11 +60,23 @@ public class FacebookFriend extends BaseObj implements Parcelable {
 	}
 
 	public String getFbFriendFaceUrl() {
+		if (StringUtility.isNullOrEmpty(getString(URL))) {
+			setFbFriendFaceUrl(createFriendFaceUrl(getFbFriendId()));
+		}
+		
 		return getString(URL);
 	}
 
 	public void setFbFriendFaceUrl(String url) {
 		put(URL, url);
+	}
+	
+	public boolean isSilhouette() {
+		return getBoolean(IS_SILHOUETTE);
+	}
+
+	public void setSilhouette(boolean silhouette) {
+		put(IS_SILHOUETTE, silhouette);
 	}
 	
 	public boolean isChecked() {
@@ -72,6 +86,11 @@ public class FacebookFriend extends BaseObj implements Parcelable {
 	public void setChecked(boolean isChecked) {
 		put(IS_CHECKED, isChecked);
 	}
+	
+	public static String createFriendFaceUrl(String id){
+    	String url = "http://graph.facebook.com/" + id + "/picture";
+    	return url;
+    }
 	
 	public static Parcelable.Creator<FacebookFriend> getCreator() {
 		return CREATOR;
@@ -85,6 +104,7 @@ public class FacebookFriend extends BaseObj implements Parcelable {
 		dest.writeString(this.getFbFriendId());
 		dest.writeString(this.getFbFriendName());
 		dest.writeString(this.getFbFriendFaceUrl());
+		dest.writeInt(this.isSilhouette() ? 1 : 0);
 		dest.writeInt(this.isChecked() ? 1 : 0);
 	}
 
@@ -94,6 +114,7 @@ public class FacebookFriend extends BaseObj implements Parcelable {
 			obj.setFbFriendId(source.readString());
 			obj.setFbFriendName(source.readString());
 			obj.setFbFriendFaceUrl(source.readString());
+			obj.setSilhouette((source.readInt() == 0) ? false : true );
 			obj.setChecked((source.readInt() == 0) ? false : true);
 			return obj;
 		}

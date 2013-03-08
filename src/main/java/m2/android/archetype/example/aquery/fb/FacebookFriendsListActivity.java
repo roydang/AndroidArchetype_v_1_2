@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import m2.android.archetype.example.R;
 import m2.android.archetype.example.FacebookSdk.internal.Utility;
@@ -12,6 +13,13 @@ import m2.android.archetype.example.aquery.fb.base.PQuery;
 import m2.android.archetype.example.aquery.fb.base.PageAdapter;
 import m2.android.archetype.example.aquery.fb.obj.FacebookFriend;
 import m2.android.archetype.example.aquery.fb.obj.FacebookFriends;
+import m2.android.archetype.example.ormlite.DBAdapter;
+import m2.android.archetype.example.ormlite.DatabaseHelper;
+import m2.android.archetype.example.pulltorefresh.object.Author;
+import m2.android.archetype.example.pulltorefresh.object.FacebookFriendsDBData;
+import m2.android.archetype.example.pulltorefresh.object.Multimedia;
+import m2.android.archetype.example.pulltorefresh.object.Post;
+import m2.android.archetype.example.pulltorefresh.object.PostDBData;
 import m2.android.archetype.util.Logger;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +30,8 @@ import android.widget.ListView;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxStatus;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.Dao;
 import com.nhn.android.archetype.base.object.BaseObj;
 
 
@@ -34,6 +44,8 @@ public class FacebookFriendsListActivity extends BaseFacebookActivity {
 	
 	private FriendsAdapter friends;
 	private List<FacebookFriend> items;
+	private DatabaseHelper databaseHelper = null;
+	private DBAdapter dbAdapter;
 	
 	@Override
 	protected void init(Bundle savedInstanceState) {
@@ -48,6 +60,22 @@ public class FacebookFriendsListActivity extends BaseFacebookActivity {
 	@Override
 	public void refresh(){		
 		ajaxFriends(-1);
+	}
+	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		if (databaseHelper != null) {
+			OpenHelperManager.releaseHelper();
+			databaseHelper = null;
+		}
+	}
+	
+	private DatabaseHelper getHelper() {
+		if (databaseHelper == null) {
+			databaseHelper = OpenHelperManager.getHelper(this, DatabaseHelper.class);
+		}
+		return databaseHelper;
 	}
 	
 	private void initView(){	 
@@ -93,7 +121,32 @@ public class FacebookFriendsListActivity extends BaseFacebookActivity {
 			
 			aq.id(R.id.list).visible();
 			
-			logger.d("done");
+			try {
+				final Dao<FacebookFriendsDBData, Integer> facebookFriendsDao = getHelper().getFacebookFriendsDao();
+				
+				facebookFriendsDao.callBatchTasks(new Callable<Void>() {
+					@Override
+					public Void call() throws Exception {
+						
+						for(FacebookFriend facebookFriend : items) {
+							FacebookFriendsDBData facebookFriendDB = new FacebookFriendsDBData();
+							facebookFriendDB.setId(facebookFriend.getFbFriendId());
+							facebookFriendDB.setName(facebookFriend.getFbFriendName());
+							facebookFriendDB.setFace(facebookFriend.getFbFriendFaceUrl());
+							facebookFriendsDao.createOrUpdate(facebookFriendDB);
+							dbAdapter.notifyDataSetChanged();
+						}
+						
+						return null;
+					}
+				});
+				
+				
+				
+
+			} catch (Exception e) {
+				logger.e(e);
+			}
 			
 		}else{
 			logger.d("error!");
@@ -240,11 +293,6 @@ public class FacebookFriendsListActivity extends BaseFacebookActivity {
 			aq.id(R.id.text_name).text(item.getFbFriendName());
 			
 			String tb = item.getFbFriendFaceUrl();
-			
-			if (Utility.isNullOrEmpty(tb)) {
-				item.setFbFriendFaceUrl("http://graph.facebook.com/" + item.getFbFriendId() + "/picture");
-				tb = item.getFbFriendFaceUrl();
-			}
 			
 			if(aq.shouldDelay(convertView, parent, tb, 0)){
 				aq.id(R.id.image_tb).clear();
