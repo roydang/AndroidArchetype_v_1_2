@@ -45,6 +45,7 @@
 	 <activity android:name=".facebook.LoginUsingLoginFragmentActivity" />
 	 <activity android:name=".facebook.LoginUsingCustomFragmentActivity" />
 	 <activity android:name=".facebook.HelloFacebookSampleActivity" />  
+	 <activity android:name="m2.android.archetype.example.aquery.fb.FacebookFriendsListActivity" />  
   	 <activity
          android:name="m2.android.archetype.example.FacebookSdk.LoginActivity"
          android:label="@string/app_name"

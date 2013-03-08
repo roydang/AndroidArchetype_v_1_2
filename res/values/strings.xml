@@ -41,5 +41,12 @@
 
     <!-- Template data parser -->
     <string name="friend_count">친구 %1$s명</string>
+    
+    <!-- AQuery Facebook -->
+    <string name="search_fb_friend">Search Facebook Friend</string>
+    <string name="fb_friends">Facebook Friends</string>
+    <string name="me">Me</string>
+    <string name="connecting_facebook">Connecting Facebook</string>
+    <string name="done">Done</string>
 
 </resources>

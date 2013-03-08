@@ -1,5 +1,6 @@
 package m2.android.archetype.example;
 
+import m2.android.archetype.example.aquery.fb.FacebookFriendsListActivity;
 import m2.android.archetype.example.facebook.HelloFacebookSampleActivity;
 import m2.android.archetype.example.ormlite.OrmCursorAdapterActivity;
 import m2.android.archetype.example.pulltorefresh.PullToRefreshActivity;
@@ -15,7 +16,7 @@ import android.widget.ListView;
 
 public class MainActivity extends ListActivity {
 
-	public static final String[] options = { "Roboguice2", "OrmLiteExampleActivity", "withFacebook", "simpleDBCursor", "OrmDBCursor"};
+	public static final String[] options = { "Roboguice2", "OrmLiteExampleActivity", "withFacebook", "loadFacebookFriends", "simpleDBCursor", "OrmDBCursor"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +43,14 @@ public class MainActivity extends ListActivity {
 				startActivity(intent);
 				break;
 			case 3:
+				intent = new Intent(this, FacebookFriendsListActivity.class);
+				startActivity(intent);
+				break;
+			case 4:
 				intent = new Intent(this, CursorAdapterActivity.class);
 				startActivity(intent);
 				break;				
-			case 4:
+			case 5:
 				intent = new Intent(this, OrmCursorAdapterActivity.class);
 				startActivity(intent);
 				break;			
