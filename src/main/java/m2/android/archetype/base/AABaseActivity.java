@@ -6,14 +6,11 @@
  */
 package m2.android.archetype.base;
 
-import roboguice.activity.RoboActivity;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
-import com.nhn.android.archetype.base.AABaseApplication.BaseApplicationListener;
-import com.nhn.android.archetype.base.image.ImageHelper;
-import com.nhn.android.archetype.base.image.ImageLoadManager;
 import com.nhn.android.archetype.base.util.internal.M2baseLogger;
 
 /**
@@ -21,7 +18,7 @@ import com.nhn.android.archetype.base.util.internal.M2baseLogger;
  * @author telltale
  *
  */
-public class AABaseActivity extends RoboActivity implements BaseApplicationListener {
+public class AABaseActivity extends Activity {
 	private static M2baseLogger logger = M2baseLogger.getLogger(AABaseActivity.class);
 	
 
@@ -30,14 +27,9 @@ public class AABaseActivity extends RoboActivity implements BaseApplicationListe
 	protected void onCreate(Bundle savedInstanceState) {
 		logger.d("onCreate class(%s)", this.getClass().getName());
     	super.onCreate(savedInstanceState);    	
-    	M3Application.setCurrentApplication(this);
 	}
 
-	@Override
-	protected void onDestroy() {
-		logger.d("onDestroy class(%s)", this.getClass().getName());
-		super.onDestroy();		
-	}
+	
 	
 	@Override
 	protected void onNewIntent(Intent intent) {
@@ -46,14 +38,6 @@ public class AABaseActivity extends RoboActivity implements BaseApplicationListe
 
 	@Override
 	public void finish() {
-		if (this.isFinishing()) {
-			return;
-		}
-		
-		super.finish();
-	}
-	
-	public final void finishForce() {
 		super.finish();
 	}
 
@@ -65,8 +49,6 @@ public class AABaseActivity extends RoboActivity implements BaseApplicationListe
 	@Override
 	protected void onPause() {
 		logger.d("onPause class(%s)", this.getClass().getName());
-		ImageLoadManager.cancelRequest();
-		
 		super.onPause();	
 	}
 
@@ -98,6 +80,12 @@ public class AABaseActivity extends RoboActivity implements BaseApplicationListe
 	}
 
 	@Override
+	protected void onDestroy() {
+		logger.d("onDestroy class(%s)", this.getClass().getName());
+		super.onDestroy();		
+	}
+	
+	@Override
     public void onConfigurationChanged(Configuration newConfig) {
     	logger.d("onConfigurationChanged(%s)", newConfig);
     	super.onConfigurationChanged(newConfig);
@@ -112,13 +100,11 @@ public class AABaseActivity extends RoboActivity implements BaseApplicationListe
 
 	@Override
 	public void startActivity(Intent intent) {
-		ImageHelper.cancelRequest();
 		super.startActivity(intent);
 	}
 
 	@Override
 	public void startActivityForResult(Intent intent, int requestCode) {
-		ImageHelper.cancelRequest();
 		super.startActivityForResult(intent, requestCode);
 	}
 

@@ -7,12 +7,12 @@
 package m2.android.archetype.base;
 
 import m2.android.archetype.util.Logger;
-import roboguice.activity.RoboFragmentActivity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
-import com.nhn.android.archetype.base.AABaseApplication.BaseApplicationListener;
+import com.nhn.android.archetype.base.AABaseApplicationOrg.BaseApplicationListener;
 import com.nhn.android.archetype.base.image.ImageHelper;
 import com.nhn.android.archetype.base.image.ImageLoadManager;
 
@@ -21,7 +21,7 @@ import com.nhn.android.archetype.base.image.ImageLoadManager;
  * @author telltale
  *
  */
-public class AABaseFragmentActivity extends RoboFragmentActivity implements BaseApplicationListener {
+public class AABaseFragmentActivity extends FragmentActivity {
 	private static Logger logger = Logger.getLogger(AABaseFragmentActivity.class);
 	
 
@@ -30,7 +30,6 @@ public class AABaseFragmentActivity extends RoboFragmentActivity implements Base
 	protected void onCreate(Bundle savedInstanceState) {
 		logger.d("onCreate class(%s)", this.getClass().getName());
     	super.onCreate(savedInstanceState);
-    	M3Application.setCurrentApplication(this);
 	}
 
 	@Override
@@ -46,14 +45,6 @@ public class AABaseFragmentActivity extends RoboFragmentActivity implements Base
 
 	@Override
 	public void finish() {
-		if (this.isFinishing()) {
-			return;
-		}
-		
-		super.finish();
-	}
-	
-	public final void finishForce() {
 		super.finish();
 	}
 
@@ -65,8 +56,6 @@ public class AABaseFragmentActivity extends RoboFragmentActivity implements Base
 	@Override
 	protected void onPause() {
 		logger.d("onPause class(%s)", this.getClass().getName());
-		ImageLoadManager.cancelRequest();
-		
 		super.onPause();	
 	}
 
@@ -112,13 +101,11 @@ public class AABaseFragmentActivity extends RoboFragmentActivity implements Base
 
 	@Override
 	public void startActivity(Intent intent) {
-		ImageHelper.cancelRequest();
 		super.startActivity(intent);
 	}
 
 	@Override
 	public void startActivityForResult(Intent intent, int requestCode) {
-		ImageHelper.cancelRequest();
 		super.startActivityForResult(intent, requestCode);
 	}
 

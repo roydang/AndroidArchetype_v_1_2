@@ -3,10 +3,21 @@ package m2.android.archetype.example.pulltorefresh.object;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.j256.ormlite.field.DatabaseField;
 import com.nhn.android.archetype.base.object.BaseObj;
 
 @SuppressWarnings("unchecked")
 public class Author extends BaseObj implements Parcelable {
+	
+	
+	@DatabaseField(generatedId = true, columnName = "_id")
+	int id;
+	@DatabaseField
+	String nickname;
+	@DatabaseField
+	String face;
+	
+	
 	private static final String ID = "id";
 	private static final String NICKNAME = "nickname";
 	private static final String FACE = "face";
@@ -30,6 +41,7 @@ public class Author extends BaseObj implements Parcelable {
 	}
 
 	public void setNickname(String nickname) {
+		this.nickname = nickname;
 		put(NICKNAME, nickname);
 	}
 	
@@ -39,6 +51,7 @@ public class Author extends BaseObj implements Parcelable {
 	}
 
 	public void setFace(String face) {
+		this.face = face;
 		put(FACE, face);
 	}
 	

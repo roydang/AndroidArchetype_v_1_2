@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 
 import m2.android.archetype.sharedpref.UserSharedPrefModel;
+import m2.android.archetype.util.AppInfoUtility;
 import m2.android.archetype.util.Logger;
-import m2.android.archetype.util.Utility;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -27,8 +27,7 @@ import com.nhn.android.archetype.base.AABaseApplication;
 public class M3Application extends AABaseApplication {
 
 	private static Logger logger = Logger.getLogger(M3Application.class);
-	private String userAgent = null; 
-	
+
 	private static M3Application instance;
 	
 	private static String externalStorageDirectory;
@@ -92,14 +91,6 @@ public class M3Application extends AABaseApplication {
 		return (mExternalStorageAvailable == true && mExternalStorageWriteable == true);
 	}
 
-
-	public String getLoginId() {
-		return UserSharedPrefModel.get().getUserId();
-	}
-
-	public String getFullAuthToken() {
-		return UserSharedPrefModel.get().getFullAuthToken();
-	}
 
 	// private boolean mIsCreatedCacheFolder = false;
 	public void createCacheFolder() {
@@ -218,64 +209,34 @@ public class M3Application extends AABaseApplication {
 		return folder;
 	}
 
-	public static void playVideo(String url, Activity activity) {
-		if (url != null && url.length() > 0) {
-			Intent intent = new Intent(Intent.ACTION_VIEW);
-			intent.setDataAndType(Uri.parse(url), "video/*");
-			activity.startActivity(intent);
-		}
-	}
-
-	public void playAudio(String url, Activity activity) {
-		Intent intent = new Intent(Intent.ACTION_VIEW);
-		intent.setDataAndType(Uri.parse(url), "audio/*");
-		activity.startActivity(intent);
-	}
 
 
 
+	// m2base 용 API - m2base 가 필요없어지면 삭제 필요
 	@Override
 	public String getAppKey() {		
-		return BaseConstants.APP_KEY;
+		return AppInfoUtility.APP_KEY;
 	}
 
 	@Override
 	public String getAppSig() {
-		return Utility.getAppSig();
+		return AppInfoUtility.getAppSig();
 	}
 
 	@Override
-	public String getUserAgent() {
-		if (userAgent == null) {
-			userAgent = createUserAgentStr(getCurrentApplication());
-		}
-		return userAgent;
+	public String getUserAgent() {		
+		return AppInfoUtility.getUserAgentStr(getCurrentApplication());
 	}
 
 	@Override
 	public String getUserId() {
-		return UserSharedPrefModel.get().getUserId();
+		return AppInfoUtility.getUserId();
 	}
 	
-	/**
-	 * USER AGENT 구성
-	 * @param context
-	 * @return
-	 */
-	public static String createUserAgentStr(Context context) {
-		String appVersion = null;
-		String strDeviceName = "devicename";
 
-		try {
-			appVersion = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
-			strDeviceName = Build.MANUFACTURER + " " + Build.MODEL;
-		} catch (PackageManager.NameNotFoundException ex) {
-			appVersion = "x.x";
-		}
-
-		strDeviceName = Build.MANUFACTURER + " " + Build.MODEL;
-		String strUserAgentValue = ("me2day/" + appVersion + " (Android OS " + Build.VERSION.RELEASE + ";" + strDeviceName + ")");
-		return strUserAgentValue;
+	@Override
+	public String getFullAuthToken() {
+		return AppInfoUtility.getFullAuthToken();
 	}
 	
 }

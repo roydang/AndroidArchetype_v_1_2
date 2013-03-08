@@ -8,14 +8,11 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-import java.util.TimeZone;
 import java.util.regex.Pattern;
 
 import m2.android.archetype.base.BaseConstants;
@@ -259,20 +256,9 @@ public class Utility {
 			url.append("&");
 		}
 		url.append("akey=");
-		url.append(BaseConstants.APP_KEY);
+		url.append(AppInfoUtility.APP_KEY);
 		url.append("&asig=");
-		url.append(getAppSig());
-	}
-
-	/**
-	 * Query때마다 현재시간으로 보내주어야 서버에서 TimeoutException이 생기지 않는다.
-	 */
-	public static String getAppSig() {
-		Calendar cal = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
-		String ts = String.format("%d", cal.getTimeInMillis());
-		String sig = CryptoUtility.md5(ts + BaseConstants.NONCE + BaseConstants.APP_KEY + BaseConstants.APP_SEC);
-		String aSig = CryptoUtility.base64(ts + "$$" + BaseConstants.NONCE + "$$" + sig);
-		return aSig;
+		url.append(AppInfoUtility.getAppSig());
 	}
 
 	/**

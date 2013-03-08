@@ -3,28 +3,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     
-    <TextView 
-        android:id="@+id/millis"
+    <ImageView 
+        android:id="@+id/face"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"        
         />
     
     <TextView 
-        android:id="@+id/date"
+        android:id="@+id/body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="10sp"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@id/date"     
+        android:layout_toRightOf="@+id/face"   
+        android:text="body"  
         />
     
     <TextView 
-        android:id="@+id/even"
+        android:id="@+id/tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_below="@id/name"
-        android:layout_alignLeft="@id/date" 
+        android:textSize="10sp"
+        android:layout_below="@+id/face"
+        android:layout_alignLeft="@+id/body" 
+        android:text="tag"
         />
+    <LinearLayout 
+        android:id="@+id/photos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/tag">
+        
+    </LinearLayout>
 </RelativeLayout>

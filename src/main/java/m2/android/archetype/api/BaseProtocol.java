@@ -14,6 +14,7 @@ import m2.android.archetype.api.BaseProtocolEnum.Me2dayURL;
 import m2.android.archetype.base.BaseConstants;
 import m2.android.archetype.base.M3Application;
 import m2.android.archetype.base.ParameterConstants;
+import m2.android.archetype.sharedpref.UserSharedPrefModel;
 import m2.android.archetype.util.CryptoUtility;
 import m2.android.archetype.util.LocaleUtility;
 import m2.android.archetype.util.Logger;
@@ -93,7 +94,7 @@ public class BaseProtocol {
 		} else {
 			String bandUrl;
 			if (streamDataType != BaseConstants.STREAM_DATA_TYPE_BAND) {
-				bandUrl = String.format(Me2dayURL.GET_POST.getURL().toString(), M3Application.getCurrentApplication().getLoginId()); 
+				bandUrl = String.format(Me2dayURL.GET_POST.getURL().toString(), "로그인아이디"); 
 			} else {
 				bandUrl = String.format(Me2dayURL.GET_POST.getURL().toString(), streamDataScope);
 			}
@@ -367,45 +368,6 @@ public class BaseProtocol {
 	}
 
 
-	////////// 로그인, 회원가입 /////////////////////////
-	public static String getLocationAgreeSettingUrl(boolean agree)	{
-		StringBuilder url = Me2dayURL.UPDATE_OZ_USER_SETTING.getURL();
-		
-		String userId = M3Application.getCurrentApplication().getLoginId();
-		if (!TextUtils.isEmpty(userId)) {
-			BaseProtocolEnum.addParam(url, "user_id", userId);
-		}
-		
-		if (agree) {
-			BaseProtocolEnum.addParam(url, "oz_location_info_consent_yn", "y");
-		} else {
-			BaseProtocolEnum.addParam(url, "oz_location_info_consent_yn", "n");
-		}
-		String urlText = url.toString();
-		BaseProtocolEnum.printLogUrl(urlText);
-		return urlText;
-	}
-
-	public static String getLocationAgreeInfoUrl()	{		
-		StringBuilder url = Me2dayURL.GET_OZ_USER_SETTING_INFO.getURL();
-		
-		String userId = M3Application.getCurrentApplication().getLoginId();
-		if (!TextUtils.isEmpty(userId)) {
-			BaseProtocolEnum.addParam(url, "user_id", userId);
-		}
-		
-		M3Application application = M3Application.getCurrentApplication();
-		if (!LocaleUtility.isLocaleKorean(application)) {
-			BaseProtocolEnum.addParam(url, ParameterConstants.PARAM_LOCALE, LocaleUtility.getSystemLocaleString(application));
-		}
-
-		Utility.appendSigUrl(url, false);
-
-		String urlText = url.toString();
-		BaseProtocolEnum.printLogUrl(urlText);
-		return urlText;
-	}
-	
 	/**
 	 * get_FriendsForAutocomplete api
 	 * 자동 소환 list 가져온다.
@@ -1180,22 +1142,6 @@ public class BaseProtocol {
 		return urlText;
 	}
 	
-	/**
-	 * 사람들은_이벤트_채팅 응모하기
-	 * @return
-	 */
-	public static String applyToChat(String chatId) {
-		StringBuilder url = Me2dayURL.APPLY_TO_CHAT.getURL();	
-		
-		String userId = M3Application.getCurrentApplication().getLoginId();
-		BaseProtocolEnum.addParam(url, "user_id", userId);
-		BaseProtocolEnum.addParam(url, "me2live_chat_id", chatId);
-		Utility.appendSigUrl(url, false);
-
-		String urlText = url.toString();
-		BaseProtocolEnum.printLogUrl(urlText);
-		return urlText;
-	}
 	
 	/**
 	 * @author bcfamily

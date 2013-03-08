@@ -1,12 +1,85 @@
 package m2.android.archetype.util;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
+
+import m2.android.archetype.sharedpref.UserSharedPrefModel;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 
 public class AppInfoUtility {
 	private static Logger logger = Logger.getLogger(AppInfoUtility.class);
 	private static String versionName = null;
+	
+	public static final String APP_KEY = "8270995ff1c87825f70efbbef1b874d0"; //Me2day
+	public static final String APP_SEC = "ZWM2NThkNDZlMjg3ODY2Y2YzOTQyZDAxM2YyMDY2OTQ="; // 미투데이
+
+	public static final String RSA_EXPONENT = "010001";
+	public static final String RSA_MODULUS = "F1F07304C7C9CFB7C64FBE75C2C0274081C4B1D04BAE0F905CF251426100B86E802633E9AD849AD1598B855C26E336B2975E0B84D673F521562F5E6E6FCDF89BBF08A6C3D99A2C3E86488CFD00397B562D06158BC4E04BBBA9B66786A454B83A142FC1BA3F7FD8C862E58CF171F60CF3B0F258C0F39915200910B29841D3D1F1";
+
+	public static final String NONCE = "ffffffff";
+	public static final String USER_AGENT_PREFIX = "me2day/";
+	
+	private static String userId;
+	private static String fullAuthToken;
+	private static String userAgent;
+	
+	public String getAppKey() {
+		return APP_KEY;
+	}
+	/**
+	 * Query때마다 현재시간으로 보내주어야 서버에서 TimeoutException이 생기지 않는다.
+	 */
+	public static String getAppSig() {
+		Calendar cal = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
+		String ts = String.format("%d", cal.getTimeInMillis());
+		String sig = CryptoUtility.md5(ts + NONCE + APP_KEY + APP_SEC);
+		String aSig = CryptoUtility.base64(ts + "$$" + NONCE + "$$" + sig);
+		return aSig;
+	}
+	public static String getUserId() {
+		if (userId == null) {
+			userId = UserSharedPrefModel.get().getUserId();;
+		} 
+		return userId;
+	}
+	public static String getFullAuthToken() {
+		if (fullAuthToken == null) {
+			fullAuthToken = UserSharedPrefModel.get().getFullAuthToken();
+		}
+		return fullAuthToken;
+	}
+	
+	/**
+	 * USER AGENT 구성
+	 * @param context
+	 * @return
+	 */
+	public static String getUserAgentStr(Context context) {
+		
+		
+		if (userAgent == null) {
+			String appVersion = null;
+			String strDeviceName = "devicename";
+	
+			try {
+				appVersion = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+				strDeviceName = Build.MANUFACTURER + " " + Build.MODEL;
+			} catch (PackageManager.NameNotFoundException ex) {
+				appVersion = "x.x";
+			}
+	
+			strDeviceName = Build.MANUFACTURER + " " + Build.MODEL;
+			userAgent = (USER_AGENT_PREFIX + appVersion + " (Android OS " + Build.VERSION.RELEASE + ";" + strDeviceName + ")");
+		}
+		return userAgent;
+	}
 	
 	public final static int getVersionCode(Context context) {
 		int versionCode = 0;
@@ -137,5 +210,17 @@ public class AppInfoUtility {
 		return Build.VERSION.SDK_INT <= Build.VERSION_CODES.FROYO;
 	}
 	
+	public static void playVideo(String url, Activity activity) {
+		if (url != null && url.length() > 0) {
+			Intent intent = new Intent(Intent.ACTION_VIEW);
+			intent.setDataAndType(Uri.parse(url), "video/*");
+			activity.startActivity(intent);
+		}
+	}
 
+	public void playAudio(String url, Activity activity) {
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.setDataAndType(Uri.parse(url), "audio/*");
+		activity.startActivity(intent);
+	}
 }

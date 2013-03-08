@@ -154,8 +154,8 @@ public class CryptoUtility {
 		String rsaStr = null;
 		byte[] input = token.getBytes();
 
-		BigInteger modulus  = new BigInteger(1, hexStringToByteArray(BaseConstants.RSA_MODULUS));
-		BigInteger exponent = new BigInteger(1, hexStringToByteArray(BaseConstants.RSA_EXPONENT));
+		BigInteger modulus  = new BigInteger(1, hexStringToByteArray(AppInfoUtility.RSA_MODULUS));
+		BigInteger exponent = new BigInteger(1, hexStringToByteArray(AppInfoUtility.RSA_EXPONENT));
 
 		try {
 			KeyFactory keyFactory = KeyFactory.getInstance("RSA");
