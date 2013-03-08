@@ -125,7 +125,7 @@ public class OrmCursorAdapterActivity extends Activity {
 							postDao.createOrUpdate(postDB);
 						}
 					}
-					dbAdapter.notifyDataSetChanged();
+//					dbAdapter.notifyDataSetChanged();
 					return null;
 				}
 			});
